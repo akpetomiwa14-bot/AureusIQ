@@ -123,10 +123,10 @@ async def get_pulse(session: Session = Depends(get_session)):
     iq_score = (min(momentum * 100, 50) + (100 - prob_ruin) * 0.3 + min(cap_eff, 20))
     iq_score = round(max(0, min(iq_score, 100)), 1)
     
-    if margin < 0: advice = "🚨 Burn rate is high. Capital protection required."
-    elif var_95 < net * 0.7: advice = "⚠️ Quant Alert: Tail risk high. 95% VaR suggests drawdown."
-    elif want_ratio > 40: advice = f"📉 Wealth leak: {want_ratio:.1f}% on wants."
-    else: advice = "🛡️ Position healthy. Real value confirmed."
+    if margin < 0: advice = " Burn rate is high. Capital protection required."
+    elif var_95 < net * 0.7: advice = " Quant Alert: Tail risk high. 95% VaR suggests drawdown."
+    elif want_ratio > 40: advice = f" Wealth leak: {want_ratio:.1f}% on wants."
+    else: advice = " Position healthy. Real value confirmed."
     
     return {
         "balances": {"NGN": net, "USD": net/mkt['USD'], "GBP": net/mkt['GBP']},
